@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MVFC.MongoDbFlow/MVFC.MongoDbFlow.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MVFC.MongoDbFlow.Tests/MVFC.MongoDbFlow.Tests.csproj" />
+  </Folder>
+</Solution>

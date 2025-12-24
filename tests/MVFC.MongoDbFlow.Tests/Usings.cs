@@ -1,0 +1,16 @@
+﻿global using Testcontainers.MongoDb;
+global using Xunit;
+global using MongoDB.Bson.Serialization;
+global using MVFC.MongoDbFlow.Abstractions;
+global using MVFC.MongoDbFlow.Tests.Models;
+global using MVFC.MongoDbFlow.Config;
+global using MVFC.MongoDbFlow.Tests.Mappings;
+global using FluentAssertions;
+global using MVFC.MongoDbFlow.Context;
+global using MongoDB.Driver;
+global using MVFC.MongoDbFlow.Extensions;
+global using MVFC.MongoDbFlow.Tests.Containers;
+global using MVFC.MongoDbFlow.UnitOfWork;
+global using MVFC.MongoDbFlow.Serialization.Serializers;
+global using MVFC.MongoDbFlow.Mapping;
+global using Microsoft.Extensions.DependencyInjection;

@@ -1,0 +1,15 @@
+﻿global using MongoDB.Driver;
+global using MVFC.MongoDbFlow.Abstractions;
+global using MVFC.MongoDbFlow.Config;
+global using MVFC.MongoDbFlow.Repositories;
+global using Microsoft.Extensions.DependencyInjection;
+global using MVFC.MongoDbFlow.Bootstrap;
+global using MVFC.MongoDbFlow.Context;
+global using MVFC.MongoDbFlow.UnitOfWork;
+global using MVFC.MongoDbFlow.Mapping;
+global using MVFC.MongoDbFlow.Serialization;
+global using MongoDB.Bson.Serialization;
+global using MongoDB.Bson.Serialization.Serializers;
+global using MVFC.MongoDbFlow.Serialization.BaseSerializer;
+global using MongoDB.Bson;
+global using MVFC.MongoDbFlow.Resolver;
