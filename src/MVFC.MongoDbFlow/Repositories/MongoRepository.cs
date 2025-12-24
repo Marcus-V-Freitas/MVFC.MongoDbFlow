@@ -20,10 +20,9 @@ internal sealed class MongoRepository<T, TId>(
         T entity,
         CancellationToken ct = default)
     {
-        if (_session is null)
-            await _collection.InsertOneAsync(entity, default, ct);
-        else
-            await _collection.InsertOneAsync(_session, entity, cancellationToken: ct);
+        await (_session is null
+            ? _collection.InsertOneAsync(entity, default, ct)
+            : _collection.InsertOneAsync(_session, entity, cancellationToken: ct));
     }
 
     /// <summary>
@@ -35,10 +34,9 @@ internal sealed class MongoRepository<T, TId>(
         IEnumerable<T> entities,
         CancellationToken ct = default)
     {
-        if (_session is null)
-            await _collection.InsertManyAsync(entities, cancellationToken: ct);
-        else
-            await _collection.InsertManyAsync(_session, entities, cancellationToken: ct);
+        await (_session is null
+            ? _collection.InsertManyAsync(entities, cancellationToken: ct)
+            : _collection.InsertManyAsync(_session, entities, cancellationToken: ct));
     }
 
     /// <summary>
@@ -112,17 +110,16 @@ internal sealed class MongoRepository<T, TId>(
         FilterDefinition<T> filter,
         CancellationToken ct = default)
     {
-        var options = new FindOptions<T>
-        {
+        var options = new CountOptions 
+        { 
             Limit = 1,
-            Projection = Builders<T>.Projection.Include("_id")
         };
 
-        var cursor = _session is null
-            ? await _collection.FindAsync(filter, options, ct)
-            : await _collection.FindAsync(_session, filter, options, ct);
+        var count = _session is null
+            ? await _collection.CountDocumentsAsync(filter, options, ct)
+            : await _collection.CountDocumentsAsync(_session, filter, options, ct);
 
-        return await cursor.AnyAsync(ct);
+        return count > 0;
     }
 
     /// <summary>
@@ -192,10 +189,9 @@ internal sealed class MongoRepository<T, TId>(
         var id = GetEntityId(entity);
         var filter = Builders<T>.Filter.Eq("_id", id);
 
-        if (_session is null)
-            await _collection.ReplaceOneAsync(filter, entity, cancellationToken: ct);
-        else
-            await _collection.ReplaceOneAsync(_session, filter, entity, cancellationToken: ct);
+        await (_session is null
+            ? _collection.ReplaceOneAsync(filter, entity, cancellationToken: ct)
+            : _collection.ReplaceOneAsync(_session, filter, entity, cancellationToken: ct));
     }
 
     /// <summary>
@@ -242,9 +238,8 @@ internal sealed class MongoRepository<T, TId>(
     /// <exception cref="InvalidOperationException">Lançada se a entidade não expõe uma propriedade "Id".</exception>
     private static TId GetEntityId(T entity)
     {
-        var prop = typeof(T).GetProperty("Id")
-            ?? throw new InvalidOperationException(
-                $"{typeof(T).Name} must expose an Id property");
+        var prop = typeof(T).GetProperty("Id") ?? 
+            throw new InvalidOperationException($"{typeof(T).Name} must expose an Id property");
 
         return (TId)prop.GetValue(entity)!;
     }
