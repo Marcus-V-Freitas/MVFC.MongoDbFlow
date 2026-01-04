@@ -1,5 +1,3 @@
-dotnet add package MVFC.MongoDbFlow
-
 # MVFC.MongoDbFlow
 
 Biblioteca .NET para acesso, mapeamento e operações CRUD genéricas com MongoDB, incluindo abstrações de repositório, mapeamento de entidades, transações e integração com Dependency Injection.
