@@ -2,13 +2,13 @@
 
 public sealed class MongoDbTestContainer : IAsyncLifetime
 {
-    public MongoDbContainer Container = new MongoDbBuilder()
+    public MongoDbContainer Container = new MongoDbBuilder("mongo:8.0")
                                                 .WithReplicaSet()
                                                 .Build();
 
-    public async Task InitializeAsync()
-        => await Container.StartAsync();
+    public async ValueTask InitializeAsync()
+        => await Container.StartAsync().ConfigureAwait(false);
 
-    public async Task DisposeAsync()
-        => await Container.DisposeAsync();
+    public async ValueTask DisposeAsync()
+        => await Container.DisposeAsync().ConfigureAwait(false);
 }

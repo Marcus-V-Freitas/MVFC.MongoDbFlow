@@ -9,5 +9,5 @@ public interface ISerializerRegistration
     /// Realiza o registro dos serializadores customizados no MongoDB.
     /// Deve ser chamado durante a inicialização da aplicação para garantir que os tipos personalizados sejam corretamente serializados e desserializados.
     /// </summary>
-    void Register();
+    public void Register();
 }

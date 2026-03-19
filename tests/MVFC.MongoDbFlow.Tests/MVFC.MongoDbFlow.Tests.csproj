@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="bogus" Version="35.6.*" />
-	<PackageReference Include="fluentAssertions" Version="7.0.*" />
-	<PackageReference Include="coverlet.collector" Version="6.0.*" />
-	<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.*" />
-	<PackageReference Include="xunit" Version="2.9.*" />
-	<PackageReference Include="xunit.runner.visualstudio" Version="3.1.*" />
-	<PackageReference Include="Testcontainers.MongoDb" Version="4.9.*" />
+	<PackageReference Include="bogus" />
+	<PackageReference Include="fluentAssertions" />
+	<PackageReference Include="coverlet.collector" />
+	<PackageReference Include="Microsoft.NET.Test.Sdk" />
+	<PackageReference Include="xunit.v3" />
+	<PackageReference Include="xunit.runner.visualstudio" />
+	<PackageReference Include="Testcontainers.MongoDb" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,8 +9,6 @@ public sealed class GuidSerializerRegistration : ISerializerRegistration
     /// Registra o serializador de <see cref="Guid"/> utilizando a representação padrão no MongoDB.
     /// Deve ser chamado durante a inicialização da aplicação para garantir a serialização correta dos valores Guid.
     /// </summary>
-    public void Register()
-    {
+    public void Register() =>
         BsonSerializer.TryRegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
-    }
 }

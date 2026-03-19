@@ -11,11 +11,6 @@ public sealed class EnumAsStringSerializerRegistration<TEnum> : ISerializerRegis
     /// Registra o serializador de <typeparamref name="TEnum"/> para que seja armazenado como string no MongoDB.
     /// Se já houver um serializador do tipo <see cref="EnumAsStringSerializer{TEnum}"/> registrado, não faz nada.
     /// </summary>
-    public void Register()
-    {
-        if (BsonSerializer.LookupSerializer<TEnum>() is EnumAsStringSerializer<TEnum>)
-            return;
-
+    public void Register() =>
         BsonSerializer.TryRegisterSerializer(new EnumAsStringSerializer<TEnum>());
-    }
 }

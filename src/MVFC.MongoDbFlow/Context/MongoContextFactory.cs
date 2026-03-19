@@ -17,6 +17,6 @@ internal sealed class MongoContextFactory(IMongoDatabase database, ICollectionNa
     /// Cria uma nova instância de <see cref="IMongoContext"/> sem sessão associada.
     /// </summary>
     /// <returns>Instância de <see cref="IMongoContext"/> pronta para uso.</returns>
-    public IMongoContext Create() => 
+    public IMongoContext Create() =>
         new MongoContext(_database, _resolver, session: null);
 }

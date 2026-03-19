@@ -9,8 +9,6 @@ public sealed class DateOnlySerializerRegistration : ISerializerRegistration
     /// Registra o serializador de <see cref="DateOnly"/> para que seja armazenado como string no MongoDB.
     /// Deve ser chamado durante a inicialização da aplicação para garantir a serialização correta dos valores <see cref="DateOnly"/>.
     /// </summary>
-    public void Register()
-    {
+    public void Register() =>
         BsonSerializer.TryRegisterSerializer(new DateOnlySerializer(BsonType.String));
-    }
 }

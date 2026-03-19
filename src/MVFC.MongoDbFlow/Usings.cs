@@ -13,3 +13,4 @@ global using MongoDB.Bson.Serialization.Serializers;
 global using MVFC.MongoDbFlow.Serialization.BaseSerializer;
 global using MongoDB.Bson;
 global using MVFC.MongoDbFlow.Resolver;
+global using MVFC.MongoDbFlow.Models;

@@ -9,5 +9,5 @@ public interface IMongoContextFactory
     /// Cria uma nova instância de <see cref="IMongoContext"/> para acesso ao banco de dados MongoDB.
     /// </summary>
     /// <returns>Instância de <see cref="IMongoContext"/> pronta para uso.</returns>
-    IMongoContext Create();
+    public IMongoContext Create();
 }

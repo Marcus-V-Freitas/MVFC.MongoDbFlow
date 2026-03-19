@@ -10,5 +10,5 @@ public interface ICollectionNameResolver
     /// </summary>
     /// <typeparam name="T">Tipo da entidade para a qual o nome da coleção será resolvido.</typeparam>
     /// <returns>Nome da coleção no MongoDB.</returns>
-    string Resolve<T>();
+    public string Resolve<T>();
 }

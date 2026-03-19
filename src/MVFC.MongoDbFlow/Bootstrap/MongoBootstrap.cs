@@ -32,11 +32,13 @@ internal sealed class MongoBootstrap
         IEnumerable<ISerializerRegistration>? serializers,
         IEnumerable<IEntityMap>? maps)
     {
-        Client = new MongoClient(options.ConnectionString);
-        Database = Client.GetDatabase(options.DatabaseName);
-        Resolver = new CollectionNameResolver(maps ?? []);
-
+        // Registro de serializadores e mapeamentos globais antes de inicializar o cliente.
         MongoSerializerRegistry.RegisterAll(serializers ?? []);
         MongoMappingRegistry.RegisterAll(maps ?? []);
+
+        var settings = MongoClientSettings.FromConnectionString(options.ConnectionString);
+        Client = new MongoClient(settings);
+        Database = Client.GetDatabase(options.DatabaseName);
+        Resolver = new CollectionNameResolver(maps ?? []);
     }
 }

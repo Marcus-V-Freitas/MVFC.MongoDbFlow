@@ -6,8 +6,10 @@ public sealed class UserMap : EntityMap<User>
 
     protected override void Configure(BsonClassMap<User> cm)
     {
+        ArgumentNullException.ThrowIfNull(cm);
+
         cm.AutoMap();
-        cm.MapIdMember(x => x.Id);
+        cm.MapIdMember(x => x.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
         cm.MapMember(x => x.Name).SetIsRequired(true);
         cm.MapMember(x => x.BirthDate);
     }
