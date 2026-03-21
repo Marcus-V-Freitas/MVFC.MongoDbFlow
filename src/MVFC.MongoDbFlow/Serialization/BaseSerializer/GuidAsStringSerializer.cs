@@ -14,8 +14,8 @@ internal sealed class GuidAsStringSerializer : SerializerBase<Guid>
     public override void Serialize(
         BsonSerializationContext context,
         BsonSerializationArgs args,
-        Guid value)
-        => context.Writer.WriteString(value.ToString());
+        Guid value) =>
+            context.Writer.WriteString(value.ToString());
 
     /// <summary>
     /// Desserializa o valor do <see cref="Guid"/> a partir de uma string no contexto do MongoDB.
@@ -25,6 +25,6 @@ internal sealed class GuidAsStringSerializer : SerializerBase<Guid>
     /// <returns>Valor do <see cref="Guid"/> desserializado.</returns>
     public override Guid Deserialize(
         BsonDeserializationContext context,
-        BsonDeserializationArgs args)
-        => Guid.Parse(context.Reader.ReadString());
+        BsonDeserializationArgs args) =>
+            Guid.Parse(context.Reader.ReadString());
 }

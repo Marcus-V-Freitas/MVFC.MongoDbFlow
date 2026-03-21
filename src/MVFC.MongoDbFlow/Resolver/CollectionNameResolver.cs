@@ -19,9 +19,8 @@ internal sealed class CollectionNameResolver(IEnumerable<IEntityMap> maps) : ICo
     {
         var type = typeof(T);
 
-        if (_map.TryGetValue(type, out var name))
-            return name;
-
-        throw new InvalidOperationException($"No collection mapping registered for {type.Name}");
+        return _map.TryGetValue(type, out var name)
+            ? name
+            : throw new InvalidOperationException($"No collection mapping registered for {type.Name}");
     }
 }

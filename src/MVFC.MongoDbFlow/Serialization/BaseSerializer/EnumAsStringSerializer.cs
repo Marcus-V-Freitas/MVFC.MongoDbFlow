@@ -16,8 +16,8 @@ internal sealed class EnumAsStringSerializer<TEnum> : SerializerBase<TEnum>
     public override void Serialize(
         BsonSerializationContext context,
         BsonSerializationArgs args,
-        TEnum value)
-        => context.Writer.WriteString(value.ToString());
+        TEnum value) =>
+            context.Writer.WriteString(value.ToString());
 
     /// <summary>
     /// Desserializa o valor do enum a partir de uma string no contexto do MongoDB.
@@ -27,7 +27,6 @@ internal sealed class EnumAsStringSerializer<TEnum> : SerializerBase<TEnum>
     /// <returns>Valor do enum desserializado.</returns>
     public override TEnum Deserialize(
         BsonDeserializationContext context,
-        BsonDeserializationArgs args)
-        => Enum.Parse<TEnum>(
-            context.Reader.ReadString(), ignoreCase: false);
+        BsonDeserializationArgs args) =>
+            Enum.Parse<TEnum>(context.Reader.ReadString(), ignoreCase: false);
 }
