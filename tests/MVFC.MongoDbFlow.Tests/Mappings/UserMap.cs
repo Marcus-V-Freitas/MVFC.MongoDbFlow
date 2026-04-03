@@ -4,13 +4,13 @@ public sealed class UserMap : EntityMap<User>
 {
     public override string CollectionName => "users";
 
-    protected override void Configure(BsonClassMap<User> cm)
+    protected override void Configure(BsonClassMap<User> map)
     {
-        ArgumentNullException.ThrowIfNull(cm);
+        ArgumentNullException.ThrowIfNull(map);
 
-        cm.AutoMap();
-        cm.MapIdMember(x => x.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
-        cm.MapMember(x => x.Name).SetIsRequired(true);
-        cm.MapMember(x => x.BirthDate);
+        map.AutoMap();
+        map.MapIdMember(x => x.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        map.MapMember(x => x.Name).SetIsRequired(true);
+        map.MapMember(x => x.BirthDate);
     }
 }

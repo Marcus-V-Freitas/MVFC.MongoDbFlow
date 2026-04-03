@@ -1,18 +1,18 @@
-﻿namespace MVFC.MongoDbFlow.Tests.Mappings;
+namespace MVFC.MongoDbFlow.Tests.Mappings;
 
 public sealed class OrderMap : EntityMap<Order>
 {
     public override string CollectionName => "orders";
 
-    protected override void Configure(BsonClassMap<Order> cm)
+    protected override void Configure(BsonClassMap<Order> map)
     {
-        ArgumentNullException.ThrowIfNull(cm);
+        ArgumentNullException.ThrowIfNull(map);
 
-        cm.AutoMap();
-        cm.MapIdMember(x => x.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
-        cm.MapMember(x => x.UserId).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
-        cm.MapMember(x => x.Status);
-        cm.MapMember(x => x.TotalAmount);
-        cm.MapMember(x => x.CreatedAt);
+        map.AutoMap();
+        map.MapIdMember(x => x.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        map.MapMember(x => x.UserId).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        map.MapMember(x => x.Status);
+        map.MapMember(x => x.TotalAmount);
+        map.MapMember(x => x.CreatedAt);
     }
 }

@@ -1,17 +1,19 @@
-namespace MVFC.MongoDbFlow.Tests;
+﻿namespace MVFC.MongoDbFlow.Tests;
 
 [Collection("Mongo collection")]
 public sealed class MongoTransactionTests(MongoDbFixture fixture)
 {
     private readonly IMongoUnitOfWorkFactory _uowFactory = fixture.Services.BuildServiceProvider().GetRequiredService<IMongoUnitOfWorkFactory>();
+
     private readonly IMongoContextFactory _contextFactory = fixture.Services.BuildServiceProvider().GetRequiredService<IMongoContextFactory>();
 
     [Fact]
     public async Task Should_Rollback_When_Commit_Is_Not_Called()
     {
         var user = MockEntities.MockUser();
+        var tx = new MongoTransactionScope(_uowFactory);
 
-        await using (var tx = new MongoTransactionScope(_uowFactory))
+        await using (tx.ConfigureAwait(true))
         {
             var repo = tx.Uow.GetRepository<User, Guid>();
             await repo.InsertAsync(user, TestContext.Current.CancellationToken);
@@ -27,8 +29,9 @@ public sealed class MongoTransactionTests(MongoDbFixture fixture)
     public async Task Should_Commit_Transaction_And_Persist_Data()
     {
         var user = MockEntities.MockUser();
+        var tx = new MongoTransactionScope(_uowFactory);
 
-        await using (var tx = new MongoTransactionScope(_uowFactory))
+        await using (tx.ConfigureAwait(true))
         {
             var repo = tx.Uow.GetRepository<User, Guid>();
             await repo.InsertAsync(user, TestContext.Current.CancellationToken);
@@ -45,8 +48,9 @@ public sealed class MongoTransactionTests(MongoDbFixture fixture)
     public async Task Should_Abort_Transaction_Explicitly()
     {
         var user = MockEntities.MockUser();
+        var tx = new MongoTransactionScope(_uowFactory);
 
-        await using (var tx = new MongoTransactionScope(_uowFactory))
+        await using (tx.ConfigureAwait(true))
         {
             var repo = tx.Uow.GetRepository<User, Guid>();
             await repo.InsertAsync(user, TestContext.Current.CancellationToken);
@@ -64,8 +68,9 @@ public sealed class MongoTransactionTests(MongoDbFixture fixture)
     {
         var user = MockEntities.MockUser();
         var order = MockEntities.MockOrder(user.Id);
+        var tx = new MongoTransactionScope(_uowFactory);
 
-        await using (var tx = new MongoTransactionScope(_uowFactory))
+        await using (tx.ConfigureAwait(true))
         {
             var users = tx.Uow.GetRepository<User, Guid>();
             var orders = tx.Uow.GetRepository<Order, Guid>();

@@ -2,9 +2,9 @@
 
 public sealed class MongoDbTestContainer : IAsyncLifetime
 {
-    public MongoDbContainer Container = new MongoDbBuilder("mongo:8.0")
-                                                .WithReplicaSet()
-                                                .Build();
+    public MongoDbContainer Container { get; } = new MongoDbBuilder("mongo:8.0")
+                                                        .WithReplicaSet()
+                                                        .Build();
 
     public async ValueTask InitializeAsync()
         => await Container.StartAsync().ConfigureAwait(false);

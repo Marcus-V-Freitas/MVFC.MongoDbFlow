@@ -1,4 +1,4 @@
-namespace MVFC.MongoDbFlow.Tests;
+﻿namespace MVFC.MongoDbFlow.Tests;
 
 [Collection("Mongo collection")]
 public sealed class MongoRepositoryTests(MongoDbFixture fixture)
@@ -130,16 +130,16 @@ public sealed class MongoRepositoryTests(MongoDbFixture fixture)
         var isDeletedProjection = Builders<User>.Projection.Expression(u => u.IsDeleted);
 
         await repo.SoftDeleteAsync(user.Id, "IsDeleted", TestContext.Current.CancellationToken);
-        (await repo.FindAsync(idFilter, isDeletedProjection, ct: TestContext.Current.CancellationToken)).First().Should().BeTrue();
+        (await repo.FindAsync(idFilter, isDeletedProjection, ct: TestContext.Current.CancellationToken))[0].Should().BeTrue();
 
         await repo.RestoreAsync(user.Id, "IsDeleted", TestContext.Current.CancellationToken);
-        (await repo.FindAsync(idFilter, isDeletedProjection, ct: TestContext.Current.CancellationToken)).First().Should().BeFalse();
+        (await repo.FindAsync(idFilter, isDeletedProjection, ct: TestContext.Current.CancellationToken))[0].Should().BeFalse();
 
         await repo.SoftDeleteAsync(idFilter, "IsDeleted", TestContext.Current.CancellationToken);
-        (await repo.FindAsync(idFilter, isDeletedProjection, ct: TestContext.Current.CancellationToken)).First().Should().BeTrue();
+        (await repo.FindAsync(idFilter, isDeletedProjection, ct: TestContext.Current.CancellationToken))[0].Should().BeTrue();
 
         await repo.RestoreAsync(idFilter, "IsDeleted", TestContext.Current.CancellationToken);
-        (await repo.FindAsync(idFilter, isDeletedProjection, ct: TestContext.Current.CancellationToken)).First().Should().BeFalse();
+        (await repo.FindAsync(idFilter, isDeletedProjection, ct: TestContext.Current.CancellationToken))[0].Should().BeFalse();
     }
 
     [Fact]

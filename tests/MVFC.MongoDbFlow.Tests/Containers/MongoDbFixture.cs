@@ -1,8 +1,8 @@
-namespace MVFC.MongoDbFlow.Tests.Containers;
+﻿namespace MVFC.MongoDbFlow.Tests.Containers;
 
 public sealed class MongoDbFixture : IAsyncLifetime
 {
-    public IServiceCollection Services = new ServiceCollection();
+    public IServiceCollection Services { get; } = new ServiceCollection();
     private readonly MongoDbTestContainer _container = new();
 
     public async ValueTask InitializeAsync()

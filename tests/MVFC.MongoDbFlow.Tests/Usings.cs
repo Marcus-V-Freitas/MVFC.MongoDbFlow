@@ -24,3 +24,4 @@ global using MVFC.MongoDbFlow.Tests.TestUtils;
 global using MVFC.MongoDbFlow.Models;
 global using MVFC.MongoDbFlow.Resolver;
 global using MVFC.MongoDbFlow.Repositories;
+global using MVFC.MongoDbFlow.Tests.Models.Enums;

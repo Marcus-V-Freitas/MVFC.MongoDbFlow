@@ -1,7 +1,5 @@
 ﻿namespace MVFC.MongoDbFlow.Tests;
 
-public enum BonusEnum { One }
-
 [Collection("Mongo collection")]
 public sealed class UnitOfWorkTests(MongoDbFixture fixture)
 {
@@ -39,10 +37,10 @@ public sealed class UnitOfWorkTests(MongoDbFixture fixture)
     public void CollectionNameResolver_Should_Throw_When_No_Map()
     {
         var resolver = new CollectionNameResolver([]);
-        var act = () => resolver.Resolve<BonusEnum>();
+        var act = () => resolver.Resolve<Bonus>();
 
         act.Should().Throw<InvalidOperationException>()
-            .WithMessage("No collection mapping registered for BonusEnum");
+            .WithMessage("No collection mapping registered for Bonus");
     }
 
     [Fact]
@@ -52,7 +50,7 @@ public sealed class UnitOfWorkTests(MongoDbFixture fixture)
         map.Register();
         map.Register(); // second call hits the "already registered" return
 
-        map.EntityType.Should().Be(typeof(User));
+        map.EntityType.Should().Be<User>();
     }
 
     [Fact]

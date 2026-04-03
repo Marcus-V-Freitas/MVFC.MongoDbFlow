@@ -1,15 +1,20 @@
-namespace MVFC.MongoDbFlow.Tests.Serialization;
+﻿namespace MVFC.MongoDbFlow.Tests.Serialization;
 
 public sealed class SerializerRegistrationTests
 {
     [Fact]
     public void EnumAsStringSerializerRegistration_Should_Register()
     {
-        var registration = new EnumAsStringSerializerRegistration<TestEnum>();
+        var registration = new EnumAsStringSerializerRegistration<TestValue>();
 
-        try { registration.Register(); } catch (BsonSerializationException) { }
+        try
+        {
+            registration.Register();
+        } catch (BsonSerializationException)
+        {
+        }
 
-        BsonSerializer.LookupSerializer<TestEnum>().Should().NotBeNull();
+        BsonSerializer.LookupSerializer<TestValue>().Should().NotBeNull();
     }
 
     [Fact]
@@ -17,7 +22,12 @@ public sealed class SerializerRegistrationTests
     {
         var registration = new GuidAsStringSerializerRegistration();
 
-        try { registration.Register(); } catch (BsonSerializationException) { }
+        try
+        {
+            registration.Register();
+        } catch (BsonSerializationException)
+        {
+        }
 
         BsonSerializer.LookupSerializer<Guid>().Should().NotBeNull();
     }
@@ -27,7 +37,12 @@ public sealed class SerializerRegistrationTests
     {
         var registration = new UtcDateTimeSerializerRegistration();
 
-        try { registration.Register(); } catch (BsonSerializationException) { }
+        try
+        {
+            registration.Register();
+        } catch (BsonSerializationException)
+        {
+        }
 
         var serializer = BsonSerializer.LookupSerializer<DateTime>();
         serializer.Should().BeOfType<DateTimeSerializer>();
@@ -39,7 +54,12 @@ public sealed class SerializerRegistrationTests
     {
         var registration = new GuidSerializerRegistration();
 
-        try { registration.Register(); } catch (BsonSerializationException) { }
+        try
+        {
+            registration.Register();
+        } catch (BsonSerializationException)
+        {
+        }
 
         var serializer = BsonSerializer.LookupSerializer<Guid>();
         serializer.Should().NotBeNull();
@@ -54,7 +74,12 @@ public sealed class SerializerRegistrationTests
     {
         var registration = new DateOnlySerializerRegistration();
 
-        try { registration.Register(); } catch (BsonSerializationException) { }
+        try
+        {
+            registration.Register();
+        } catch (BsonSerializationException)
+        {
+        }
 
         BsonSerializer.LookupSerializer<DateOnly>().Should().NotBeNull();
     }

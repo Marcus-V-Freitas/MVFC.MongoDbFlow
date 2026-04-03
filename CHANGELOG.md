@@ -1,9 +1,19 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [3.3.0] - 2026-04-03
+
+### Added
+- Integrated MinVer for automated versioning based on Git tags.
+
+### Changed
+- Refined codebase after static analysis tool integration for improved code quality.
+- Enhanced CI/CD pipeline for more robust building and testing processes.
+- Adapted unit tests to comply with new static analysis rules.
 
 ## [3.2.1] - 2026-03-21
 
@@ -67,6 +77,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Entity mapping and collection name resolution.
 - Integration with Microsoft.Extensions.DependencyInjection.
 
+[3.3.0]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.2.1...v3.3.0
 [3.2.1]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.2.0...v3.2.1
 [3.2.0]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.1.0...v3.2.0
 [3.1.0]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v1.0.2...v3.1.0
