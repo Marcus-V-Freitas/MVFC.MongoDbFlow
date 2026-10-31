@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.3]
+
+### Added
+
+- Added `global.json` to configure test runner to use `Microsoft.Testing.Platform`.
+
+### Changed
+
+- Minor formatting adjustments in `Directory.Build.props`.
+
 ## [3.3.2]
 
 ### Added
@@ -107,6 +117,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Entity mapping and collection name resolution.
 - Integration with Microsoft.Extensions.DependencyInjection.
 
+[3.3.3]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.2...v3.3.3
 [3.3.2]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.1...v3.3.2
 [3.3.1]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.0...v3.3.1
 [3.3.0]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.2.1...v3.3.0
