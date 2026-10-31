@@ -332,6 +332,11 @@ dotnet_naming_rule.local_functions_must_be_pascal.severity = warning
 # 11. DIAGNÓSTICOS ROSLYN — IDE (code style)
 # ──────────────────────────────────────────────────────────
 
+[*.cs]
+# CA2007: Do not directly await a Task without ConfigureAwait
+dotnet_diagnostic.MA0004.severity = none
+dotnet_diagnostic.CA2007.severity = none
+
 # Remover usings desnecessários
 dotnet_diagnostic.IDE0005.severity = warning
 

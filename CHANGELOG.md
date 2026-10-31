@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.2]
+
+### Added
+
+- Added `MVFC.Pack.Analyzers` package for centralized static code analysis.
+
+### Changed
+
+- Updated NuGet dependencies in `Directory.Packages.props`:
+  - `mongodb.driver` to `3.13.0`
+  - `coverlet.collector` to `10.1.0`
+  - `xunit.runner.visualstudio` to `4.0.1`
+  - `xunit.v3` to `4.0.2`
+  - `Microsoft.NET.Test.Sdk` to `18.11.0`
+  - `Testcontainers.MongoDb` to `4.16.0`
+  - `MinVer` to `8.1.0-alpha.1`
+  - `Microsoft.Extensions.DependencyInjection` to `10.0.14` (.NET 10) and pinned version `[9.0.13]` (.NET 9)
+- Replaced direct `SonarAnalyzer.CSharp` reference with `MVFC.Pack.Analyzers` in `Directory.Build.targets`.
+- Configured `.editorconfig` to suppress `CA2007` and `MA0004` diagnostic rules for C# files.
+- Configured package metadata (`PrivateAssets` and `IncludeAssets`) for test runner dependencies (`coverlet.collector`, `xunit.runner.visualstudio`) in `MVFC.MongoDbFlow.Tests.csproj`.
+
 ## [3.3.1] - 2026-06-26
 
 ### Changed
@@ -86,6 +107,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Entity mapping and collection name resolution.
 - Integration with Microsoft.Extensions.DependencyInjection.
 
+[3.3.2]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.1...v3.3.2
 [3.3.1]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.0...v3.3.1
 [3.3.0]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.2.1...v3.3.0
 [3.2.1]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.2.0...v3.2.1
