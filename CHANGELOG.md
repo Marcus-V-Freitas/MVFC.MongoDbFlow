@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2026-11-13
+
+### Added
+
+- Added support for .NET 11 (`net11.0`) across library and test suite.
+- Configured local .NET tools manifest (`.config/dotnet-tools.json`) with `dotnet-coverage` (18.12.0) and `dotnet-reportgenerator-globaltool` (5.3.11).
+- Configured `global.json` with SDK roll-forward policy (`latestMajor`) and pre-release support.
+
+### Changed
+
+- Updated target framework of test project (`MVFC.MongoDbFlow.Tests`) to .NET 11.
+- Updated NuGet package dependencies in `Directory.Packages.props`:
+  - `mongodb.driver` to `3.14.0`
+  - `MVFC.Pack.Analyzers` to `4.0.2`
+  - `xunit.v3` to `4.0.3`
+  - `Microsoft.NET.Test.Sdk` to `18.12.0`
+  - Added conditional reference for `Microsoft.Extensions.DependencyInjection` `11.0.0` for .NET 11, pinned `[10.0.14]` for .NET 10, and `[9.0.13]` for .NET 9.
+- Updated `build.cake` to execute local tools via `dotnet tool run` instead of ad-hoc installation.
+- Overhauled GitHub Actions CI/CD workflow (`ci.yml`):
+  - Added multi-SDK setup (.NET 9, 10, and 11).
+  - Enforced tag verification to ensure release tags originate from `main`.
+  - Added sticky pull request comments for test coverage summaries.
+  - Added automated GitHub Release creation.
+- Conditioned `MVFC.Pack.Analyzers` on `$(IsTestProject) != 'true'` in `Directory.Build.targets`.
+- Updated documentation and badges across READMEs for .NET 9, 10, and 11 support.
+
 ## [3.3.6]
 
 ### Changed
@@ -135,6 +161,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Entity mapping and collection name resolution.
 - Integration with Microsoft.Extensions.DependencyInjection.
 
+[4.0.0]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.6...v4.0.0
 [3.3.6]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.5...v3.3.6
 [3.3.5]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.4...v3.3.5
 [3.3.4]: https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/compare/v3.3.3...v3.3.4
