@@ -5,7 +5,7 @@
 [![CI](https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.MongoDbFlow/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/Marcus-V-Freitas/MVFC.MongoDbFlow/branch/main/graph/badge.svg)](https://codecov.io/gh/Marcus-V-Freitas/MVFC.MongoDbFlow)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
-![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
+![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010%20%7C%2011-blue)
 [![NuGet](https://img.shields.io/nuget/dt/MVFC.MongoDbFlow)](https://www.nuget.org/packages/MVFC.MongoDbFlow)
 
 Biblioteca .NET para acesso genérico ao MongoDB, mapeamento de entidades e operações CRUD assíncronas — incluindo abstração de repositório, serializadores customizados, transações, soft-delete, paginação e integração com Dependency Injection.
@@ -30,18 +30,18 @@ O objetivo é simples: deixar você focar na **lógica de domínio** ao invés d
 
 ## Funcionalidades
 
-| Categoria | Capacidades |
-|---|---|
-| **Repositório** | Insert · InsertMany · GetOne · Find · FindPaged · Exists · Count · Distinct · Projeções |
-| **Atualizações** | Update (por id/filtro) · UpdateMany · UpdateFields · Replace · FindOneAndUpdate |
-| **Exclusões** | Delete (por id/filtro) · DeleteMany · FindOneAndDelete |
-| **Soft Delete** | SoftDelete (por id/filtro) · Restore (por id/filtro) |
-| **Lote** | BulkWrite (operações mistas) |
-| **Transações** | MongoTransactionScope com rollback automático no dispose |
-| **Mapeamento** | EntityMap\<T\> com configuração fluente de BSON |
-| **Serializadores** | Guid · DateOnly · Enum-as-string · UTC DateTime |
-| **DI** | Registro em uma linha com `AddMongoFlow(...)` |
-| **Testes** | Testes de integração com Testcontainers |
+| Categoria          | Capacidades                                                                             |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| **Repositório**    | Insert · InsertMany · GetOne · Find · FindPaged · Exists · Count · Distinct · Projeções |
+| **Atualizações**   | Update (por id/filtro) · UpdateMany · UpdateFields · Replace · FindOneAndUpdate         |
+| **Exclusões**      | Delete (por id/filtro) · DeleteMany · FindOneAndDelete                                  |
+| **Soft Delete**    | SoftDelete (por id/filtro) · Restore (por id/filtro)                                    |
+| **Lote**           | BulkWrite (operações mistas)                                                            |
+| **Transações**     | MongoTransactionScope com rollback automático no dispose                                |
+| **Mapeamento**     | EntityMap\<T\> com configuração fluente de BSON                                         |
+| **Serializadores** | Guid · DateOnly · Enum-as-string · UTC DateTime                                         |
+| **DI**             | Registro em uma linha com `AddMongoFlow(...)`                                           |
+| **Testes**         | Testes de integração com Testcontainers                                                 |
 
 ---
 
