@@ -2,7 +2,7 @@
 
 public sealed class MongoDbTestContainer : IAsyncLifetime
 {
-    public MongoDbContainer Container { get; } = new MongoDbBuilder("mongodb/mongodb-community-server:8.0.38-ubuntu2204-slim")
+    public MongoDbContainer Container { get; } = new MongoDbBuilder("mongo:8.0.38")
                                                         .WithReplicaSet()
                                                         .Build();
 
